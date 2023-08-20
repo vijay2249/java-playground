@@ -1,3 +1,9 @@
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.function.BiConsumer;
+import java.util.function.BinaryOperator;
+
 public class Main{
 	record Person(String firstName, String lastName){
 		@Override
