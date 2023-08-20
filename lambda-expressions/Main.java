@@ -38,11 +38,24 @@ public class Main{
         return o1.firstName.compareTo(o2.firstName);
       }
     }
+
+		var coords = Arrays.asList(
+			new double[]{12.3, 33.2},
+			new double[]{44.2,-22.6}
+		);
+
+		BiConsumer<Double, Double> p1 = (a,b) -> System.out.println(a + ", "+ b);
+		coords.forEach(s -> processPoint(s[0], s[1], p1));
+
 	}
 
 	public static <T> T calculator(Operations<T> function, T value1, T value2){
 		T result = function.operate(value1, value2);
 		sysOut(result);
-		
+
+	}
+
+	public static <T> void processPoint(T t1, T t2, BiConsumer<T,T> consumer){
+		consumer.accept(t1,t2);
 	}
 }
