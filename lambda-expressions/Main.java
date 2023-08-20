@@ -15,11 +15,11 @@ public class Main{
 		var comparatorLastName = new Comparator<Person>(){
 			@Override
 			public int compare(Person o1, Person o2){
-				return o1.lastName().compareTo(o2.lastName());
+				return o1.lastName.compareTo(o2.lastName);
 			}
 		};
 		people.sort(comparatorLastName);
-		people.sort((o1,o2) -> o1.lastName().compareTo(o2.lastName()));
+		people.sort((o1,o2) -> o1.lastName.compareTo(o2.lastName));
     System.out.println(people);
 
     interface EnhancedComparator<T> extends Comparator<T>{
@@ -29,14 +29,20 @@ public class Main{
     var comparatorMixed = new EnhancedComparator<Person>(){
       @Override
       public int compare(Person o1, Person o2){
-        int result = o1.lastName().compareTo(o2.lastName());
+        int result = o1.lastName.compareTo(o2.lastName);
         return (result == 0? secondLevel(o1, o2) : result);
       }
 
       @Override
       public int secondLevel(Person o1, Person o2){
-        return o1.firstName().compareTo(o2.firstName());
+        return o1.firstName.compareTo(o2.firstName);
       }
     }
+	}
+
+	public static <T> T calculator(Operations<T> function, T value1, T value2){
+		T result = function.operate(value1, value2);
+		sysOut(result);
+		
 	}
 }
