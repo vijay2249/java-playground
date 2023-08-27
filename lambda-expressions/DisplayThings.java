@@ -1,3 +1,5 @@
+package com.lambda;
+
 public class DisplayThings{
 
   public static void displayDashes(int number){
